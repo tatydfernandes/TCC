@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d25269;
+        }
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #faf38b;
+            border: 1px solid #61411e;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 95%;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #d25269;
+            color: #faf38b;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #61411e;
+        }
+
+        header{
+            text-align: center;
+            width: 100%;
+            background-color: #d25269;
+            border-bottom: 2px solid #61411e;
+        }
+        .img_logo{
+            width: 200px;
+            border-radius: 100%;
+            border: 2px solid #61411e;
+            box-shadow: 0 0 20px #61411e;
+        }
+        .img_logo:hover{
+            box-shadow: 0 0 50px #faf38b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/img/logo.jpeg" class="img_logo">
+    </header>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="processar_login.php" method="POST">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+</body>
+</html>
