@@ -1,0 +1,358 @@
+/* ESTILOS PADRÕES */
+:root{
+    --cor-1:rgba(250, 243, 139, .5);
+    --cor-2:#143700;
+    --cor-3:linear-gradient(#da3b58,#c0344d);
+    --cor-4:linear-gradient(#4b2d0d,#251611);
+    --cor-5:white;
+    --cor-6:#da3b58;
+    --cor-7:radial-gradient(#ececec,#ffffff);
+    --cor-8: rgba(50, 10, 19, 0.8);
+}
+*{
+    margin: 0;
+    padding: 0; 
+}
+body{
+    text-align: center;
+    background: var(--cor-1);
+}
+header{
+    text-align: center;
+    width: 100%;
+    background: var(--cor-2);
+    border-bottom: 1px solid var(--cor-6);
+}
+.img_logo{
+    width: 200px;
+    border-radius: 100%;
+    border: 2px solid var(--cor-6);
+    box-shadow: 0 0 20px var(--cor-2);
+}
+.img_logo:hover{
+    box-shadow: 0 0 50px var(--cor-6);
+}
+.icon_acoes{
+    width: 2.7vh;
+}
+nav{
+    text-align: center;
+    padding: .1%;
+    border-bottom: 1px solid var(--cor-6);
+    background: var(--cor-4);
+}
+nav button{
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 1%;
+    border: none;
+    background: var(--cor-5);
+    color: var(--cor-6);
+    border: solid 1px var(--cor-6);
+
+}
+nav button:hover{
+    color: var(--cor-5);
+    background: var(--cor-3);
+    border:var(--cor-5) solid 1px;
+    box-shadow: 0 0 30px var(--cor-5);
+    text-shadow: 0 0 30px var(--cor-5);
+}
+footer{
+    border-top: 1px solid var(--cor-6);
+    clear: both;
+    width: 100%;
+    height: 100%;
+    min-height: 70px;
+    color: var(--cor-6);
+    background: var(--cor-4);
+    bottom: 0;
+    position: relative;
+}
+
+.content{
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    padding: 2%;
+}
+/* ESTILOS PADRÕES FIM */
+/* ESTILOS REFERENTES À PÁGINA PRECIFICADOR */
+.container_A{
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.container_B{
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* PARTE DOS INGREDIENTES */
+
+
+.lista_ingredientes {
+    background: var(--cor-3);
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+}
+.lista_ingredientes th{
+    padding: .5%;
+    background: var(--cor-4);
+    color: var(--cor-5);
+    border-radius: 5px;
+    text-wrap: wrap;
+
+}
+.lista_ingredientes td{
+    margin: 0;
+    background: var(--cor-5);
+    color: var(--cor-2);
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+.lista_ingredientes td p{
+    text-align: left;
+    text-wrap: wrap;
+    width: 10vmax;
+}
+.lista_ingredientes td  input[type=text]{
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    width: 8vmax;
+    background: transparent;
+    color: var(--cor-2);
+    text-align: center;
+}
+ /* PARTE DO CALCULO */
+ 
+ .tb_precificador_produto{
+    background: var(--cor-3);
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+}
+.tb_precificador_produto th{
+    background: var(--cor-4);
+    color: var(--cor-5);
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+.tb_precificador_produto td{
+    margin: 0;
+    background: var(--cor-5);
+    color: var(--cor-2);
+    border-radius: 5px;
+
+}
+.tb_precificador_produto input[type=text]{
+    border-radius: 5px;
+    border: none;
+    width: 10vmax;
+    background: transparent;
+    color: var(--cor-2);
+    text-align: center;
+}
+/* CRIAÇÃO PRODUTO */
+.tb_criacao_produto{
+    background: var(--cor-3);
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+}
+.tb_criacao_produto th{    
+    background: var(--cor-4);
+    color: var(--cor-5);
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+.tb_criacao_produto td{
+    margin: 0;
+    background: var(--cor-5);
+    color: var(--cor-2);
+    border-radius: 5px;
+}
+.tb_criacao_produto td button{
+    color: var(--cor-2);
+    border: var(--cor-2);
+}
+select{
+    border-radius: 5px;
+    border: none;
+    width: 10vmax;
+    background: transparent;
+    color: var(--cor-2);
+}
+/* INSERÇÃO E VISUALIZAÇÃO DO PRODUTO */
+.tb_salvar_produto{
+    margin-top: 1%;
+    background: var(--cor-3);
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+}
+.tb_salvar_produto th{
+    background: var(--cor-4);
+    color: var(--cor-5);
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+.tb_salvar_produto td{
+    margin: 0;
+    background: var(--cor-5);
+    color: var(--cor-2);
+    border-radius: 5px;
+
+}
+.tb_salvar_produto input[type=text]{
+    border-radius: 5px;
+    border: none;
+    width: 10vmax;
+    background: transparent;
+    color: var(--cor-2);
+    text-align: center;
+}
+.tb_salvar_produto textarea{
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    min-width: 100%;
+    min-height: 10vh;
+    max-width: 10vh;
+    max-height: 10vh;
+    background: transparent;
+    color: var(--cor-2);
+}
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background: var(--cor-5);
+    color: var(--cor-6);
+    border: solid 1px var(--cor-6);
+    border-radius: 5px;
+}
+.custom-file-upload:hover {    
+    background: var(--cor-3);
+    color: var(--cor-5);
+    border: solid 1px var(--cor-5);
+}
+input[type="file"] {
+    display: none;
+}
+.tb_salvar_produto input[type=reset]{    
+    background: var(--cor-5);
+    color: var(--cor-6);
+    border: solid 1px var(--cor-6);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.tb_salvar_produto input[type=reset]:hover{    
+    background: var(--cor-3);
+    color: var(--cor-5);
+    border: solid 1px var(--cor-5);
+}
+
+.tb_salvar_produto input[type=submit]{    
+    background: var(--cor-5);
+    color: var(--cor-6);
+    border: solid 1px var(--cor-6);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.tb_salvar_produto input[type=submit]:hover{    
+    background: var(--cor-3);
+    color: var(--cor-5);
+    border: solid 1px var(--cor-5);
+}
+
+
+
+/* TELA DE VENDA */
+.vitrine{
+    margin-left: 2%;
+    display: flex;    
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: flex-start;
+}
+.box_exibidor_produto{
+    background: var(--cor-8);
+    border: 1px solid var(--cor-6);
+    margin: .5%;
+    padding: 1%;
+    justify-content: center;
+    width: 20vh;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: space-between;
+}
+.produto_part1exibe{
+    width: 100%;
+}
+.produto_part2exibe{
+    width: 100%;
+    min-height: 7vmax;
+    text-align: left;
+    text-wrap: wrap;
+}
+.produto_part3exibe{
+    width: 100%;
+    height: auto;
+    text-align: left;
+    text-wrap: wrap;
+}
+.produto_part3exibe button{
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--cor-3);
+    padding: 4%;
+    border: none;
+    color: var(--cor-5);
+    float: right;
+}
+.title_produto{
+    float: left;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--cor-6);
+}
+.descricao_produto{
+    float: left;
+    font-size: 14px;
+    color: var(--cor-5);
+}
+.valor_do_produto{
+    float: left;
+    font-size: 20px;
+    color: var(--cor-6);
+}
+.img_produto{
+    border-radius: 15px;
+    width: 20vh;
+    height: 20vh;
+}
+
+/* PAGINA LISTA-PRODUTOS */
+.table_lista{
+    margin-top: 1%;
+    background: var(--cor-3);
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+}
+.table_lista th{
+    background: var(--cor-4);
+    color: var(--cor-5);
+    border-radius: 5px;
+    text-wrap: wrap;
+}
+.table_lista td{
+    margin: 0;
+    background: var(--cor-5);
+    color: var(--cor-2);
+    border-radius: 5px;
+}
