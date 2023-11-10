@@ -1,0 +1,13 @@
+No cmd:    composer install
+No cmd:    ipconfig    
+
+Na pasta do projeto: copiar o .env.example e renomear a copia para .env e fazer a conexão com o banco de dados alterando as seguintes linhas:
+
+APP_URL=http://"DIGITAR_O_IPv4_MOSTRADO_NO_PROMPT_DE_COMANDO"
+
+DB_DATABASE=pattibrigaderia
+DB_USERNAME=root
+DB_PASSWORD=
+
+De volta ao no cmd:  php artisan key:generate
+Iniciar o projeto:   php artisan serve --host="DIGITAR_O_IPv4_MOSTRADO_NO_PROMPT_DE_COMANDO" --port=8000

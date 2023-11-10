@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Produto;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+use App\Cliente;
 
-
-
-class ProdutoController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,19 +13,9 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        $produto = Produto::all();
-        return view('vender', compact('produto'));
-    }
-    public function indexLista()
     {
-        $produto = Produto::all();
-        return view('lista-produtos', compact('produto'));
-    }
-    public function indexjson()
-    {        
-        $produto = Produto::all();
-        return $produto;
+        $cliente = Cliente::all();
+        return view('gerenciarClientes', compact('cliente'));
     }
 
     /**
@@ -49,24 +35,20 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    $produto = new Produto();
-    $produto->produto = $request->input('txNomeProduto');
-    $produto->descricao = $request->input('txDescrProduto');
-    $produto->categoria = $request->input('txCategoria');
-    $produto->valor_unitario = $request->input('txValorSProduto');
-    $produto->valor_venda = $request->input('txValorVProduto');
-
-    if ($request->hasFile('image') && $request->file('image')->isValid()) {
-        $extension = $request->image->extension();
-        $imageName = md5($request->image->getClientOriginalName() . strtotime("now")) . "." . $extension;
-        $request->image->move(public_path('img/produtos'), $imageName);
-        $produto->foto = $imageName;
+    {
+        $cliente = new Cliente();
+        $cliente->cliente = $request->input('txNomeCliente');
+        $cliente->celular = $request->input('txCelularCliente');
+        $cliente->cep = $request->input('txCepCliente');
+        $cliente->municipio = $request->input('txMunicipioCliente');
+        $cliente->logradouro = $request->input('txLogradouroCliente');
+        $cliente->bairro = $request->input('txBairroCliente');
+        $cliente->complemento = $request->input('txComplementoCsCliente');
+        $cliente->numero = $request->input('txNumeroCsCliente');
+        $cliente->email = $request->input('txEmailCliente');
+        $cliente->save();
+        return redirect('/gerenciarClientes');
     }
-
-    $produto->save();
-    return redirect('/precificador');
-}
 
     /**
      * Display the specified resource.
@@ -76,8 +58,7 @@ class ProdutoController extends Controller
      */
     public function show($id)
     {
-        $produto = Produto::find($id);
-        return view('produto-editar', compact('produto'));
+        //
     }
 
     /**
@@ -110,7 +91,8 @@ class ProdutoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        Cliente::where('idCliente',$id)->delete();
+        return redirect('gerenciarClientes');
     }
 }

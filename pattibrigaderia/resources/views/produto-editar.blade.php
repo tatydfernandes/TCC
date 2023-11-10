@@ -16,12 +16,16 @@
         <a href="/"><button>Home</button></a>
         <a href="precificador"><button>Precificar</button></a>
         <a href="vender"><button>Vender</button></a>
-        <a href=""><button>Visualizar Vendas</button></a>
+        <a href="gerenciarClientes"><button>Clientes</button></a>
+        <a href="dashboard"><button>Dashboard</button></a>
     </nav>
 
     <div class="content">
-        <form method="POST" action="/atualizar-produto">
+        <form method="POST" action="{{ route('produto.update', ['id' => $produto->idProduto]) }}" enctype="multipart/form-data">
+
             {{ csrf_field() }}
+            <input type="hidden" name="_method" value="PUT">
+
             <input type="hidden" name="produto_id" value="{{ $produto->idProduto }}">
     
             <label for="produto">Produto:</label>
@@ -46,6 +50,6 @@
 
     </div>
 
-    <footer></footer>    
+ 
 </body>
 </html>

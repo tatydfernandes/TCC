@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Document</title>
+    <script src="/js/scriptprecificador.js"></script>   
+    <title>PattiBrigaderia</title>
 </head>
 <body>
     <header>
@@ -16,12 +17,11 @@
         <a href="/"><button>Home</button></a>
         <a href="precificador"><button>Precificar</button></a>
         <a href="vender"><button>Vender</button></a>
-        <a href=""><button>Visualizar Vendas</button></a>
+        <a href="gerenciarClientes"><button>Clientes</button></a>
+        <a href="dashboard"><button>Dashboard</button></a>
     </nav>
-    <div class="content"></div>
 
-
-    <footer></footer>
-    
+    <div class="content">
+        @yield('content')
+    </div>
 </body>
-</html>

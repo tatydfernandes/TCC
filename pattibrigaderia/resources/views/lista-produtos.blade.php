@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>PattiBrigaderia</title>
-</head>
-<body>
-    <header>
-        <a href="/">
-            <img class="img_logo" src="img/logo.jpeg" class="logo">
-        </a>
-    </header>
-    <nav>
-        <a href="/"><button>Home</button></a>
-        <a href="precificador"><button>Precificar</button></a>
-        <a href="vender"><button>Vender</button></a>
-        <a href=""><button>Visualizar Vendas</button></a>
-    </nav>
+@extends('layouts.layoutdefault')
+@section('content')
 
-    <div class="content">
-        
-        <table class="table_lista">
+
+<table class="table_lista">
             <tr>
                 <th>ID</th>
                 <th>Produto</th>
@@ -50,8 +31,4 @@
             @endforeach
         </table>
 
-    </div>
-
-    <footer></footer>    
-</body>
-</html>
+@endsection

@@ -1,35 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/scriptprecificador.js"></script>    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>PattiBrigaderia</title>
-</head>
-<body>
-    <header>
-        <a href="/">
-            <img class="img_logo" src="img/logo.jpeg" class="logo">
-        </a>
-    </header>
-    <nav>
-        <a href="/"><button>Home</button></a>
-        <a href="precificador"><button>Precificar</button></a>
-        <a href="vender"><button>Vender</button></a>
-        <a href=""><button>Visualizar Vendas</button></a>
-    </nav>
+@extends('layouts.layoutdefault')
+@section('content')
 
-    <div class="content">
-
-        <div class="container_A">           
-
+<div class="container_A">           
+    
             <table class="lista_ingredientes">
                 <tr>
                     <th colspan="7">Tabela de Ingredientes</th>
                 </tr>
                 <form method="POST" action="/ingrediente" class="formI">
-                        {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <tr>
                         <td>
                             <input type="text" name="txIngrediente" placeholder="Ingrediente">
@@ -116,7 +95,7 @@
             </table>
 
             <form action="/Produto" method="POST" enctype="multipart/form-data">
-            {{ csrf_field() }}
+                {{ csrf_field() }}
                 <table class="tb_salvar_produto">
                     <tr>
                         <th colspan="2">Salvar Novo Produto</th>
@@ -176,8 +155,5 @@
 
         </div>
 
-    </div>
-
-    <footer></footer>    
-</body>
-</html>
+        
+        @endsection

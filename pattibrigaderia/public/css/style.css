@@ -58,7 +58,7 @@ nav button:hover{
     box-shadow: 0 0 30px var(--cor-5);
     text-shadow: 0 0 30px var(--cor-5);
 }
-footer{
+/*footer{
     border-top: 1px solid var(--cor-6);
     clear: both;
     width: 100%;
@@ -68,7 +68,7 @@ footer{
     background: var(--cor-4);
     bottom: 0;
     position: relative;
-}
+}*/
 
 .content{
     justify-content: center;
@@ -273,10 +273,11 @@ input[type="file"] {
 /* TELA DE VENDA */
 .vitrine{
     margin-left: 2%;
-    display: flex;    
-    flex-wrap: wrap;
+    display: flex;  
     text-align: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
 }
 .box_exibidor_produto{
     background: var(--cor-8);
@@ -293,6 +294,8 @@ input[type="file"] {
 }
 .produto_part1exibe{
     width: 100%;
+    background: var(--cor-5);
+    border-radius: 10px;
 }
 .produto_part2exibe{
     width: 100%;
@@ -337,6 +340,23 @@ input[type="file"] {
     height: 20vh;
 }
 
+
+/*  CARRINHO  */
+.carrinho{
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    padding: 2%;
+    border: 2px solid red;
+}
+.carrinho select{
+    width: auto;
+}
+.carrinho_lista{
+    width: 100%;
+}
+
+
 /* PAGINA LISTA-PRODUTOS */
 .table_lista{
     margin-top: 1%;
@@ -355,4 +375,63 @@ input[type="file"] {
     background: var(--cor-5);
     color: var(--cor-2);
     border-radius: 5px;
+}
+
+/* CLiente */
+.container_cliente_form{
+    width: 100%;
+    text-align: center;
+}
+
+
+
+
+#formCliente{
+    padding: 10px;
+    text-align: center;
+}
+#formCliente label{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+.groupForm{
+    padding: 1px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+#formCliente h1{
+    text-align: center;
+}
+#formCliente input{
+    margin: .1%;
+}
+#cadClienteNome{
+    width: 20vh;
+}
+#cadClienteCelular{   
+    width: 20vh;    
+}
+#cadClienteLogradouro{
+    width: 30vh;
+}
+#cadClienteNumero{
+    width: 9vh;
+}
+#cadClienteComplemento{
+    width: 9vh;
+}
+
+
+.tabela_cliente{
+    background: var(--cor-3);
+    width: 100%;
+}
+.tabela_cliente th{
+    background: var(--cor-2);
+    color: var(--cor-5);
+}
+.tabela_cliente td{
+    background: var(--cor-5);
+    color: var(--cor-2);
 }
