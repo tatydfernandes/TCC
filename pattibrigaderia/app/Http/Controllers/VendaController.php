@@ -3,7 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use App\Venda;
+use App\Carrinho;
+use App\Cliente;
+use App\Usuario;
+use App\Produto;
+use App\FPagamento;
 
 class VendaController extends Controller
 {
@@ -13,9 +20,14 @@ class VendaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        $venda = Venda::all();
-        return view('dashboard', compact('venda'));
+    {
+        $vendas = DB::table('tbVenda')
+            ->join('tbCliente', 'tbVenda.idCliente', '=', 'tbCliente.idCliente')
+            ->join('tbFPagamento', 'tbVenda.idFPagamento', '=', 'tbFPagamento.idFPagamento')
+            ->select('tbVenda.*', 'tbCliente.cliente', 'tbFPagamento.fPagamento')
+            ->get();
+
+        return view('dashboard', compact('vendas'));
     }
 
     /**
@@ -37,36 +49,67 @@ class VendaController extends Controller
      */
     public function store(Request $request)
 {
-    // Criar um novo registro de venda
-    $venda = new Venda();
-    $venda->idCliente = $request->input('txVendaCliente');
-    $venda->tpVenda = $request->input('txTVenda');
-    $venda->dtVenda = $request->input('txDataPed');
-    $venda->dtEntrega = $request->input('txDataEnt');
-    $venda->status = $request->input('txStatus');
-    $venda->save();
+    // Validação dos dados
+    $this->validate($request, [
+        'txVendaCliente' => 'required',
+        'txTVenda' => 'required',
+        'txDataPed' => 'required',
+        'txDataEnt' => 'required',
+        'txStatus' => 'required',
+        'txTotalDaVenda' => 'required',
+        'txIdProduto' => 'required|array',
+        'txQtd' => 'required|array',
+        'txTotalProduto' => 'required|array',
+    ]);
 
-    $idVenda = $venda->id;
+    // Inicia uma transação no banco de dados
+    DB::beginTransaction();
 
-    $idProdutos = $request->input('txIdProduto');
-    $qtdProdutos = $request->input('txQtd');
-    $valoresProdutos = $request->input('txTotalProduto');
+    try {
+        // Cria um novo registro de venda
+        $venda = new Venda([
+            'idCliente' => $request->input('txVendaCliente'),
+            'tpVenda' => $request->input('txTVenda'),
+            'dtVenda' => $request->input('txDataPed'),
+            'dtEntrega' => $request->input('txDataEnt'),
+            'totalVenda' => floatval(str_replace(',', '.', str_replace('R$', '', $request->input('txTotalDaVenda')))),
+            'status' => $request->input('txStatus'),
+            'idFPagamento' => $request->input('txFPagamento'), 
+        ]);
+        $venda->save();
 
-    // Iterar pelos produtos e associá-los ao mesmo idVenda
-    for ($i = 0; $i < count($idProdutos); $i++) {
-        $vendaProduto = new Venda();
-        $vendaProduto->idVenda = $idVenda;
-        $vendaProduto->idProduto = $idProdutos[$i];
-        $vendaProduto->qtdProduto = $qtdProdutos[$i];
-        
-        // Remover o símbolo "R$" e converter o valor em decimal
-        $valorProduto = str_replace("R$", "", $valoresProdutos[$i]);
-        $vendaProduto->valorTotalProduto = floatval($valorProduto);
-        
-        $vendaProduto->save();
+        $idVenda = $venda->id;
+
+        $idProdutos = $request->input('txIdProduto');
+        $qtdProdutos = $request->input('txQtd');
+        $valorProdutos = $request->input('txTotalProduto');
+        $txValorUnitario = $request->input('txValorVenda');
+
+        // Itera sobre os produtos e associa-os à venda
+        for ($i = 0; $i < count($idProdutos); $i++) {
+            $vendaProduto = new Carrinho([
+                'idVenda' => $idVenda,  // Certifique-se de que $idVenda está definido
+                'idProduto' => $idProdutos[$i],
+                'valor_unitario' => floatval(str_replace(',', '.', str_replace("R$", "", $txValorUnitario[$i]))),
+                'qtd' => $qtdProdutos[$i],
+                'valor_total' => floatval(str_replace(',', '.', str_replace("R$", "", $valorProdutos[$i])))
+            ]);
+
+            // Associa o item de carrinho à venda
+            $venda->itensDeCarrinho()->save($vendaProduto);
+        }
+
+        // Commit da transação se tudo estiver bem
+        DB::commit();
+
+        return redirect('/vender')->with('success', 'Venda registrada com sucesso!');
+    } catch (\Exception $e) {
+        // Reverte a transação em caso de erro
+        DB::rollBack();
+
+        // Tratamento de erro
+        throw new \Exception('Erro ao processar a venda. ' . $e->getMessage());
     }
-
-    return redirect('/vender');
 }
 
 

@@ -8,6 +8,12 @@ class Venda extends Model
 {
     protected $primaryKey = 'idVenda';
     protected $table = 'tbvenda';    
-    protected $fillable = ['idVenda','idCliente','idProduto','qtdProduto','valorTotalProduto','tpVenda','dtVenda','dtEntrega','status','idFPagamento'];
+    protected $fillable = ['idCliente','tpVenda','dtVenda','dtEntrega','status','idFPagamento','totalVenda'];
     public $timestamps = false;
+
+    public function itensDeCarrinho()
+    {
+        return $this->hasMany(Carrinho::class, 'idVenda', 'idVenda');
+    }
+    
 }

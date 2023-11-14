@@ -435,3 +435,23 @@ input[type="file"] {
     background: var(--cor-5);
     color: var(--cor-2);
 }
+
+
+/* PÁGINA DE RELATORIO */
+.table_vendas{
+    width: 100%;
+    background: var(--cor-6);
+}
+.table_vendas th{
+    background: var(--cor-2);
+    color: var(--cor-5);
+}
+.table_vendas td:nth-child(odd) {
+	background:var(--cor-5);
+    color: var(--cor-8);
+}
+
+.table_vendas td:nth-child(even){
+	background:var(--cor-8);
+    color: var(--cor-5);
+}

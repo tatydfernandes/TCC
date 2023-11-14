@@ -2,32 +2,29 @@
 @section('content')
 
 
-<table>
+<table class="table_vendas">
     <tr>
         <th>ID</th>
         <th>Cliente</th>
-        <th>Produto</th>
-        <th>Quantidade do produto</th>
-        <th>Valor total do produto</th>
         <th>Tipo de venda</th>
-        <th>data da venda</th>
-        <th>data da entrega</th>
+        <th>Data da venda</th>
+        <th>Data da entrega</th>
+        <th>Total da Venda</th>
         <th>Forma de Pagamento</th>
-        <th>status de pagamento</th>
+        <th>Status</th>
     </tr>
-    @foreach($venda as $v)
+    @foreach($vendas as $v)
     <tr>
         <td>{{$v->idVenda}}</td>
-        <td>{{$v->idCliente}}</td>
-        <td>{{$v->idProduto}}</td>
-        <td>{{$v->qtdProduto}}</td>
-        <td>{{$v->valorTotalProduto}}</td>
+        <td>{{$v->cliente}}</td>
         <td>{{$v->tpVenda}}</td>
         <td>{{$v->dtVenda}}</td>
         <td>{{$v->dtEntrega}}</td>
-        <td>{{$v->idFPagamento}}</td>
+        <td>{{$v->totalVenda}}</td>
+        <td>{{$v->fPagamento}}</td>
         <td>{{$v->status}}</td>
     </tr>
+    
     @endforeach
 </table>
 

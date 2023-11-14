@@ -4,7 +4,7 @@
 <div class="vitrine">
 
     @foreach($produto as $p)
-        <div class="box_exibidor_produto">
+        <div class="box_exibidor_produto" data-product-id="{{ $p->idProduto }}">
             <div class="produto_part1exibe">
                 <img class="img_produto" src="img/produtos/{{ $p->foto }}">
             </div>
@@ -16,7 +16,7 @@
                 
             <div class="produto_part3exibe">
                 <p class="valor_do_produto">R$ {{ $p->valor_venda }}</p>
-                <button  class="add-to-cart">Add</button>
+                <button  class="add-to-cart" data-product-id="{{ $p->idProduto }}">Add</button>
             </div>
         </div>
     @endforeach
@@ -27,7 +27,6 @@
             {{ csrf_field() }}
             <label for="txVendaCliente">Cliente: </label>
             <select name="txVendaCliente" id="txVendaCliente">
-                <option value="0">Desconhecido</option>
                 @foreach($cliente as $cli)
                 <option value="{{$cli->idCliente}}">{{$cli->cliente}}</option>
                 @endforeach
@@ -61,6 +60,9 @@
                     <th>Valor Total</th>
                 </tr>
             </table>
+            
+            <label for="txTotalDaVenda">Total da Venda</label>
+            <input type="text" name="txTotalDaVenda" id="txTotalDaVenda" readonly>
 
             <label for="txFPagamento">Forma de Pagamento</label>
             <select name="txFPagamento" id="txFPagamento">
@@ -76,6 +78,7 @@
     </div>
 
     <script src="/js/scriptcarrinho.js"></script> 
+    <script src="/js/scriptinputs.js"></script> 
 
 
 

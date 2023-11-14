@@ -2,7 +2,9 @@
 @extends('layouts.layout-login')
 @section('content')
 
-    <form>
+    <form method="POST" action="">
+        {{ csrf_field() }}
+
         <h1>Login</h1>
         <label for="usuario">Usuário</label><br/>
         <input type="text" name="txUsuario" id=usuario><br/>
