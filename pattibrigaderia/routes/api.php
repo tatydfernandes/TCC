@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,5 +18,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('Produto', 'ProdutoController@indexjson');
-Route::get('Ingredientes', 'IngredientesController@indexjson');
+Route::get('/Produto', 'ProdutoController@indexApi');
+
+
+Route::get('/Ingredientes', 'IngredientesController@indexjson');

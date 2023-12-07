@@ -1,6 +1,8 @@
 @extends('layouts.layoutdefault')
 @section('content')
 
+<script src="/js/scriptprecificador.js"></script>   
+
 <div class="container_A">           
     
             <table class="lista_ingredientes">
@@ -151,7 +153,6 @@
                     </tr>
                 </table>
             </form>
-            <a href="lista-produtos"><button>Ver todos os produtos</button></a>
 
         </div>
 

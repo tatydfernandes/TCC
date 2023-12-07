@@ -1,0 +1,135 @@
+/* ESTILOS PADRÕES */
+:root{
+    --cor-1:rgba(250, 243, 139, .5);
+    --cor-2:#143700;
+    --cor-3:linear-gradient(#da3b58,#c0344d);
+    --cor-4:linear-gradient(#4b2d0d,#251611);
+    --cor-5:white;
+    --cor-6:#da3b58;
+    --cor-7:radial-gradient(#ececec,#ffffff);
+    --cor-8: rgba(50, 10, 19, 0.8);
+}
+*{
+    margin: 0;
+    padding: 0; 
+}
+body{
+    text-align: center;
+    background: var(--cor-1);
+}
+header{
+    text-align: center;
+    width: 100%;
+    background: var(--cor-2);
+    border-bottom: 1px solid var(--cor-6);
+}
+.img_logo{
+    width: 200px;
+    border-radius: 100%;
+    border: 2px solid var(--cor-6);
+    box-shadow: 0 0 20px var(--cor-2);
+}
+.img_logo:hover{
+    box-shadow: 0 0 50px var(--cor-6);
+}
+.icon_acoes{
+    width: 2.7vh;
+}
+nav{
+    text-align: center;
+    padding: .1%;
+    border-bottom: 1px solid var(--cor-6);
+    background: var(--cor-4);
+}
+nav button{
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 1%;
+    border: none;
+    background: var(--cor-5);
+    color: var(--cor-6);
+    border: solid 1px var(--cor-6);
+    font-style: oblique;
+
+}
+nav button:hover{
+    color: var(--cor-5);
+    background: var(--cor-3);
+    border:var(--cor-5) solid 1px;
+    box-shadow: 0 0 30px var(--cor-5);
+    text-shadow: 0 0 30px var(--cor-5);
+}
+
+.content{
+    justify-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    padding: 2%;
+}
+/* ESTILOS PADRÕES FIM */
+
+
+.container {
+    background: var(--cor-5);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--cor-6);
+    margin-top: 20px;
+    box-shadow: 0 0 50px var(--cor-6);
+}
+
+h1 {
+    color: var(--cor-6);
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: large;
+}
+
+input[type="text"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid var(--cor-6);
+    border-radius: 5px;
+    background: var(--cor-1);
+}
+input[type="text"],
+input[type="tel"],
+select{
+    text-align: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    background: var(--cor-7);
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid var(--cor-6);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="reset"],
+input[type="submit"] {
+    background: var(--cor-8);
+    color: var(--cor-5);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}

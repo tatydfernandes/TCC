@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Usuario::class, // Certifique-se de que está apontando para a sua model Usuario
+            'model' => App\User::class, // Certifique-se de que está apontando para a sua model Usuario
         ],
     
 

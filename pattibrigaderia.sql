@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 13-Nov-2023 às 19:34
+-- Tempo de geração: 24-Nov-2023 às 16:41
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -24,6 +24,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `migrations`
+--
+
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tbcarrinho`
 --
 
@@ -37,19 +73,20 @@ CREATE TABLE IF NOT EXISTS `tbcarrinho` (
   `idVenda` int(11) NOT NULL,
   PRIMARY KEY (`idCarrinho`),
   KEY `idProduto` (`idProduto`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tbcarrinho`
 --
 
 INSERT INTO `tbcarrinho` (`idCarrinho`, `idProduto`, `qtd`, `valor_unitario`, `valor_total`, `idVenda`) VALUES
-(1, 6, 1, '3.00', '3.00', 1),
-(2, 8, 3, '3.00', '9.00', 1),
-(3, 9, 2, '3.00', '6.00', 1),
-(4, 6, 2, '3.00', '6.00', 2),
-(5, 8, 2, '3.00', '6.00', 2),
-(6, 9, 3, '3.00', '9.00', 2);
+(1, 6, 2, '3.00', '6.00', 1),
+(2, 14, 12, '3.00', '36.00', 1),
+(3, 15, 1, '3.00', '3.00', 1),
+(4, 10, 2, '3.00', '6.00', 1),
+(5, 8, 1, '3.00', '3.00', 1),
+(6, 9, 4, '3.00', '12.00', 1),
+(7, 16, 1, '3.00', '3.00', 1);
 
 -- --------------------------------------------------------
 
@@ -70,15 +107,15 @@ CREATE TABLE IF NOT EXISTS `tbcliente` (
   `email` varchar(200) DEFAULT NULL,
   `bairro` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tbcliente`
 --
 
 INSERT INTO `tbcliente` (`idCliente`, `cliente`, `celular`, `municipio`, `cep`, `logradouro`, `numero`, `complemento`, `email`, `bairro`) VALUES
-(1, 'Vinicius Telles', '11977825356', 'São Paulo', '08150350', 'Rua Samuel Pedro dos Santos', 114, 'casa 4', 'telles861@gmail.com', 'Jardim Robru'),
-(2, 'Desconhecido', '00000000', '-----------', '000000000', '--------------', 0, '-----', '------------', '---------------');
+(2, 'unknown', '00000000', '-----------', '000000000', '--------------', 0, '-----', '------------', '---------------'),
+(5, 'teste', '92564465', 'sp', '011111111', 'teste', 1, '5', 'teste@teste.com', 'teste');
 
 -- --------------------------------------------------------
 
@@ -177,40 +214,23 @@ CREATE TABLE IF NOT EXISTS `tbproduto` (
   `foto` varchar(1000) DEFAULT NULL,
   `categoria` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idProduto`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tbproduto`
 --
 
 INSERT INTO `tbproduto` (`idProduto`, `produto`, `descricao`, `valor_unitario`, `valor_venda`, `foto`, `categoria`) VALUES
-(6, 'Capim Santo', 'Brigadeiro feito com capim santo e enrolado em amêndoa laminada', '3.00', '3.00', '5f36c106c796ebacf30feaf10808bea0.png', 'Brigadeiro'),
-(8, 'Tradicional', 'Brigadeiro tradicional', '3.00', '3.00', '45f4f041e29c1e4015132e797936c776.png', 'Brigadeiro'),
-(9, 'Maracujá', 'Brigadeiro feito com maracujá', '3.00', '3.00', '2557e866c55fc0cd88e3439cce849307.png', 'Brigadeiro');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tbusuario`
---
-
-DROP TABLE IF EXISTS `tbusuario`;
-CREATE TABLE IF NOT EXISTS `tbusuario` (
-  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) DEFAULT NULL,
-  `usuario` varchar(100) DEFAULT NULL,
-  `senha` varchar(1000) DEFAULT NULL,
-  `perfil` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idUsuario`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Extraindo dados da tabela `tbusuario`
---
-
-INSERT INTO `tbusuario` (`idUsuario`, `nome`, `usuario`, `senha`, `perfil`) VALUES
-(1, 'Administrador', 'admin', 'senhatesteadmin123', 'administrador'),
-(2, 'Vinicius', 'viniteste123', 'testesenha123', 'funcionario');
+(6, 'Brigadeiro de Capim Santo', 'Brigadeiro feito com capim santo e passado em amêndoa laminada', '3.00', '3.00', '5f36c106c796ebacf30feaf10808bea0.png', 'Brigadeiro'),
+(10, 'Brigadeiro de Café', 'Brigadeiro feito com café e passado em confeitos de chocolate amargo.', '3.00', '3.00', '52b768c7a419644577688f8252e1971f.png', 'Brigadeiro'),
+(8, 'Brigadeiro Tradicional', 'Brigadeiro tradicional', '3.00', '3.00', '45f4f041e29c1e4015132e797936c776.png', 'Brigadeiro'),
+(9, 'Brigadeiro de Maracujá', 'Brigadeiro feito com maracujá', '3.00', '3.00', '7d5ce3a9b37a2c6c875c083aeadf4c90.png', 'Brigadeiro'),
+(11, 'Brigadeiro Ferrerinho', 'Brigadeiro tradicional com avelã e nutella.', '3.00', '3.00', '0fa75bcadac896c4cf23e271d968bd18.png', 'Brigadeiro'),
+(12, 'Brigadeiro Crocante', 'Brigadeiro feito com amendoim.', '3.00', '3.00', 'ea83eb04715f9d69cedb141197770c74.png', 'Brigadeiro'),
+(13, 'Brigadeiro de Nutella', 'Brigadeiro feito com Nutella', '3.00', '3.00', 'd79a6ee324e112ebe194f705e8b79b23.png', 'Brigadeiro'),
+(14, 'Brigadeiro de Paçoca', 'Brigadeiro feito com paçoca e passado na paçoca.', '3.00', '3.00', 'ccb97c55b0dd8f117b44540713ec1da5.png', 'Brigadeiro'),
+(15, 'Brigadeiro Tradicional(Confete)', 'Brigadeiro tradicional com confetes.', '3.00', '3.00', 'c07fb1035f52894b3057c0573c405ea4.png', 'Brigadeiro'),
+(16, 'Brigaderio Frutas do Bosque', 'Brigadeiro de frutas do bosque passado em açúcar vermelho.', '3.00', '3.00', '4fb5f4674fc11b0b4f5ed161fa45a213.png', 'Brigadeiro');
 
 -- --------------------------------------------------------
 
@@ -231,15 +251,40 @@ CREATE TABLE IF NOT EXISTS `tbvenda` (
   PRIMARY KEY (`idVenda`),
   KEY `idCliente` (`idCliente`),
   KEY `idFPagamento` (`idFPagamento`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `tbvenda`
 --
 
 INSERT INTO `tbvenda` (`idVenda`, `idCliente`, `tpVenda`, `dtVenda`, `dtEntrega`, `status`, `idFPagamento`, `totalVenda`) VALUES
-(1, 2, 'Pronta entrega', '2023-11-13', '2023-11-13', 'Pago', 1, '18.00'),
-(2, 1, 'Encomenda', '2023-11-13', '2023-11-23', 'Parcial', 3, '21.00');
+(1, 5, 'Pronta entrega', '2023-11-24', '2023-11-24', 'Parcial', 1, '69.00');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Administrador', 'administrador@admin.com', '$2y$10$7pSgcOr5dbA5cNUJ5uZxLOCd6D9QFUq86HxVioXgLCbezYNyyPGC6', '6Dpxw19uF4wzI4horHVQLEkyFAswf1zJEhEZBBCYqGuLWnOmvXDcQd6dYk1F', '2023-11-24 03:00:00', '2023-11-24 03:00:00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

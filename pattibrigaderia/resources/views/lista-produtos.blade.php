@@ -25,7 +25,7 @@
                 <td><a href="img/produtos/{{ $p->foto }}">{{ $p->foto }}</a></td>
                 <td>
                     <a href="/lista-produtos/excluir/{{ $p->idProduto }}"><img src="img/icon/excluir.png" class="icon_acoes"></a><!-- Exclui o produto do banco de dados -->
-                    <a href="/produto-editar/editar/{{ $p->idProduto }}"><img src="img/icon/Editar.png" class="icon_acoes"></a><!-- Edita o produto do banco de dados -->
+                    <a href="/produto/editar/{{ $p->idProduto }}"><img src="img/icon/Editar.png" class="icon_acoes"></a>
                 </td>
             </tr>
             @endforeach
